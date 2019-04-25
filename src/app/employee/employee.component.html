@@ -1,0 +1,73 @@
+
+
+  <br>
+  <br>
+
+<div class="col">
+    <div class="col-md-4">
+  <input type="text"  [(ngModel)]="searchText" placeholder="serach here">
+ </div>
+</div>
+ <br>
+ <br>
+ 
+
+ <div class="row">
+    <div class="col-md-8">
+        <div class="col-md-4">
+        <button type="button" class="btn btn-secondary btn-sm RbtnMargin"  (click)="getnavigate()">Add New Employee </button>
+    </div>
+   </div>
+  </div>
+ <br>
+ <br>
+ <br>
+ 
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-stripped">
+        <thead>
+          <th>ID:</th>
+          <th appSorting [sortKey]="'name'" [data]="emp">Name:</th>
+          <th appSorting [sortKey]="'city'" [data]="emp">City:</th>
+          <th appSorting [sortKey]="'designation'" [data]="emp">Designation:</th>
+          <th appSorting [sortKey]="'salary'" [data]="emp">Salary:</th>
+          <th>Created At :</th>
+          <th>Modified On :</th>
+
+
+        </thead>
+       
+        <tbody>
+          <tr *ngFor="let empdetails of emp | search: {name: searchText, city: searchText,  designation: searchText};let i=index" appColor [pricerange]="empdetails.salary">
+         <!-- <tr *ngFor="let empdetails of emp|search:name;let i=index">-->
+            <td>{{i}}</td>
+            <td>{{empdetails.name | uppercase}}</td>
+            <td>{{empdetails.city | uppercase}}</td>
+            <td>{{empdetails.designation| uppercase}}</td>
+            <td>{{empdetails.salary|currency:'Rs '}}</td> 
+            <td>{{empdetails.created_at}}</td>
+            <td>{{empdetails.updated_at}}</td>
+          
+             <td>
+               <button type="button" class="btn btn-secondary btn-sm" (click)="getviewdeatils(empdetails._id)">View</button>
+             </td>
+             <td>
+              <button type="button" class="btn btn-secondary btn-sm" (click)="edit(empdetails._id)">Edit</button>
+            </td>
+             <td>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="delete(empdetails._id)">Delete</button>
+              </td>
+           
+
+            </tr>
+         
+        </tbody>
+  
+      </table>
+    </div>
+  </div>
+  
+  
+<router-outlet></router-outlet>

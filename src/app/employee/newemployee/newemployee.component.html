@@ -1,0 +1,59 @@
+<div class="jumbotron">
+  <div class="container login-container">
+    <div class="row">
+      <div class="col-md-6">
+      
+        <form [formGroup]="employeeform">
+          <div class="row form-group">
+
+            <div class="col-md-4"> <label>Employee Name:</label></div>
+            <div class="col-md-6"><input type="text" formControlName="name" class="form-control" [readonly]="isReadOnly"
+                [(ngModel)]="newemp.name"></div>
+
+            <!--<div *ngIf="name.invalid && (name.dirty || name.touched)">
+  Name is important
+</div>-->
+           
+
+          </div>
+          <div class="row form-group">
+            <div class="col-md-4"> <label>City:</label></div>
+            <div class="col-md-6"><input type="text" formControlName="city" class="form-control" 
+                [readonly]="isReadOnly" [(ngModel)]="newemp.city"></div>
+            <!---<div *ngIf="name.errors.required">
+              Name is required.
+            </div>-->
+
+          </div>
+          <div class="row form-group">
+            <div class="col-md-4"><label>Designation:</label></div>
+            <div class="col-md-6"><input type="text" formControlName="designation" class="form-control"
+                [readonly]="isReadOnly" [(ngModel)]="newemp.designation"></div>
+          <!---<div *ngIf="name.errors.required">
+              Name is required.
+            </div>-->
+
+          </div>
+          <br>
+          <div class="row form-group">
+            <div class="col-md-4"><label>Salary:</label></div>
+            <div class="col-md-6"><input type="number" formControlName="salary" class="form-control"  [readonly]="isReadOnly" [(ngModel)]="newemp.salary"></div>
+          </div>
+           <!---<div *ngIf="name.errors.required">
+              Name is required.
+            </div>-->
+
+          <div class="row">
+            <div class="col-md-4"><button type="button" class="btn btn-primary btn-sm" [hidden]="isButtonhide" (click)="buttonvalue()">{{setbutton}}</button></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <button type="button" class="btn btn-secondary btn-sm" (click)="back()" [hidden]="backbttnhide">Back</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
